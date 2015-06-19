@@ -1,7 +1,9 @@
 = entitygen
 
 This is an attempt to re-create some of the functionality of seam-gen;
-it generates the five artifacts needed for a single-entity JSF list-detail application:
+The Home Function doesn't work at present!
+
+It generates the five artifacts needed for a single-entity JSF list-detail application:
 
 - ${Entity}Home.java
 - ${Entity}List.java
@@ -18,7 +20,7 @@ APIs used:
 	Another repo of mine; not in Central yet; clone it and do "mvn install" to install in your .m2/repository
 -	Apache DeltaSpike Data for EntityList.
 
-Limitations:
+Limitations/TODOs:
 
 - only does one entity at a time
 - assumes you have already coded the Java Entity and it's on your classpath
