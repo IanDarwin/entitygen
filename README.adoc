@@ -8,9 +8,17 @@ it generates the five artifacts needed for a single-entity JSF list-detail appli
 	${Entity}View.xhtml # the Detail page
 	${Entity}Edit.xhtml
 
-At present it is limited to:
+Pre-requisites:
+	Apache Maven for building.
+
+APIs used:
+	darwinsys-ee API for EntityHome
+		Another repo; not in Central yet; clone it and do "mvn install" to install in your .m2/repository
+	Apache DeltaSpike Data for EntityList.
+
+Limitations:
 	- only does one entity at a time
-	- assumes you have already coded the Java Entity
+	- assumes you have already coded the Java Entity and it's on your classpath
 	- assumes you did so using Field annotations instead of Accessor annotations
 	- assumes a single level of inheritance for entities
 	- assumes you want to use PrimeFaces UI.
