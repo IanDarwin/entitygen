@@ -1,0 +1,17 @@
+package ${pkg_name};
+
+import entity.EntityHome;
+
+import ${entityClazz.name};
+
+public class ${EntityClassUC}Home extends EntityHome<${EntityClassUC},Long> {
+	@Override
+	public ${EntityClassUC} newInstance() {
+		return new ${EntityClassUC}();
+	}
+
+	@Override
+	public String getListPage() {
+		return "${EntityClassUC}List";
+	}
+}

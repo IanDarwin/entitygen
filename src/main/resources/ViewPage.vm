@@ -1,0 +1,44 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+
+<ui:define name="pageTitle">${EntityClassUC} Edit</ui:define>
+<h:head>
+<f:metadata>
+    <f:event type="preRenderView" rendered="#{!empty request.getParameter('${EntityClassLC}Id')}" listener="#{${EntityClassLC}Home.wire(request.getParameter('${EntityClassLC}Id'))}"/>
+    <f:event type="preRenderView" rendered="#{ empty request.getParameter('${EntityClassLC}Id')}" listener="#{${EntityClassLC}Home.create()}"/>
+</f:metadata>
+</h:head>
+
+<ui:define name="body">
+
+	<h:form id="entityForm">
+	<p:panel>
+		<f:facet name="header">${EntityClassUC} Edit</f:facet>
+		<h:panelGrid columns='2'>
+		
+		Id:
+		<h:inputText id="idTF" value="#{${EntityClassLC}Home.instance.id}"/>
+		
+#foreach ($field in ${entityClazz.declaredFields})
+#if (${field.name} != "id")
+		${field.name}:
+		<h:outputText id="${field.name}TF" value="#{${EntityClassLC}Home.instance.${field.name}}" required='false'/>
+		#end
+#end
+			
+		</h:panelGrid>
+	</p:panel>
+
+	<p:commandButton value="Edit" action="/${EntityClassLC}Edit.web" ajax='false'/>
+	<p:commandButton value="Done" action="#{${EntityClassLC}Home.done}" ajax='false'/>
+	</h:form>
+	
+</ui:define>
+</ui:composition>
+>
