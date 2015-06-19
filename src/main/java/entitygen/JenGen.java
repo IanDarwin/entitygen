@@ -95,10 +95,10 @@ public class JenGen {
 			String dirName, String pathName,
 			Template template)
 			throws IOException {
-		File homeClassFile = new File(dirName, pathName);
-		PrintWriter homeClassWriter = new PrintWriter(homeClassFile);
-		template.merge(context, homeClassWriter);
-		homeClassWriter.close();
+		File classFile = new File(dirName, pathName);
+		PrintWriter classWriter = new PrintWriter(classFile);
+		template.merge(context, classWriter);
+		classWriter.close();
 	}
 
 	/**
