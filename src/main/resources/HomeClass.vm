@@ -5,6 +5,9 @@ import entity.EntityHome;
 import ${entityClazz.name};
 
 public class ${EntityClassUC}Home extends EntityHome<${EntityClassUC},Long> {
+	
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public ${EntityClassUC} newInstance() {
 		return new ${EntityClassUC}();
