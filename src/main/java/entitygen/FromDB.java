@@ -18,11 +18,15 @@ public class FromDB {
 		tableName = "task";
 		entityClass = "Task";
 
-		new FromDB().
-		process(conn, tableName, entityClass);
+		FromDB prog = new FromDB();
+		try {
+			prog.process(conn, tableName, entityClass);
+		} catch (SQLException e) {
+			System.out.println("Fail: " + e);
+		}
 	}
 
-	void process(Connection conn, String tableName, String entityClass) {
+	void process(Connection conn, String tableName, String entityClass) throws SQLException {
 		System.out.println("Running wild");
 		if (conn == null) {
 			throw new IllegalArgumentException("Connection object is null");
