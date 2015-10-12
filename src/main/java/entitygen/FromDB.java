@@ -16,7 +16,7 @@ public class FromDB {
 
 		conn = ConnectionUtil.getConnection("todo");
 		tableName = "task";
-		entityClass = "Task";
+		entityClass = uppercaseName(tableName);
 
 		FromDB prog = new FromDB();
 		try {
@@ -24,6 +24,10 @@ public class FromDB {
 		} catch (SQLException e) {
 			System.out.println("Fail: " + e);
 		}
+	}
+
+	public static String uppercaseName(String name) {
+		return Character.toUpperCase(name.charAt(0)) + name.substring(1);
 	}
 
 	void process(Connection conn, String tableName, String entityClass) throws SQLException {
