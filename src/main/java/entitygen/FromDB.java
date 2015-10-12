@@ -36,10 +36,15 @@ public class FromDB {
 			throw new IllegalArgumentException("Connection object is null");
 		}
 		DatabaseMetaData meta = conn.getMetaData();
-		ResultSet tables = meta.getTables(null, null, null, null);
-		while(tables.next()) {
+		ResultSet tables = md.getTables(null, null, "%", new String[]{"TABLE","VIEW"});
+		while (tables.next()) {
 			String table = tables.getString(1);
 			System.out.println("TABLE: " + table);
+			ResultSet columns = md.getColumns(null, null, tableName, "%");
+			while (columns.next()) {
+				String column = tables.getString(4);
+				System.out.println("\tCOLUMN: " + column);
+			}
 		}
 	}
 }
