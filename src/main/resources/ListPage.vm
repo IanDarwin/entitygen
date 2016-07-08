@@ -35,7 +35,7 @@
 #if (${field.name} != "id")
 		<p:column>
 			<f:facet name="header">${field.name}</f:facet>
-			<h:outputText value="#{_entity.${field.name}"/>
+			<h:outputText value="#{_entity.${field.name}]"/>
 		</p:column>
 #end
 #end

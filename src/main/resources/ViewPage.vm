@@ -27,7 +27,7 @@
 		
 #foreach ($field in ${entityClazz.declaredFields})
 #if (${field.name} != "id")
-		${field.name}:
+		<h:outputText value="${field.name}:"/>
 		<h:outputText id="${field.name}TF" value="#{${EntityClassLC}Home.instance.${field.name}}" required='false'/>
 		#end
 #end
