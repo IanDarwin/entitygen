@@ -39,10 +39,10 @@ Pull Requests welcome.
 
 == HOWTO
 
-Assume you have compiled the `model.Event` entity with `-d /tmp`, something like this:
+Assume you have compiled e.g., the `model.Event` entity with `-d /tmp`, something like this:
 ----
 mvn package assembly:single
-java -jar target/entitygen-0.0.1-SNAPSHOT-jar-with-dependencies.jar /tmp model/Event
+java -jar target/entitygen-0.0.1-SNAPSHOT-jar-with-dependencies.jar /tmp model.Event
 ls -R ../entitygenoutput # or dir/s ..\entitygenoutput in the backward lands
 ----
 
