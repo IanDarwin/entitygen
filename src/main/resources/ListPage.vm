@@ -45,11 +45,11 @@
 			<f:facet name="header">Operations</f:facet>
 			<h:outputLink value="${EntityClassUC}View.web">
 				View
-				<f:param name="personId" value="#{_entity.id}"/>
+				<f:param name="${EntityClassLC}Id" value="#{_entity.id}"/>
 			</h:outputLink>
 			<h:outputLink value="${EntityClassUC}Edit.web">
 				Edit
-				<f:param name="personId" value="#{_entity.id}"/>
+				<f:param name="${EntityClassLC}Id" value="#{_entity.id}"/>
 			</h:outputLink>
 		</p:column>
 	</p:dataTable>
