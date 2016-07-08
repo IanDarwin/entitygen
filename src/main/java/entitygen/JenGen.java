@@ -25,7 +25,7 @@ public class JenGen {
 	
 	// Things that will need to be parameterized
 	final static String OUTPUT_DIR = "../entitygenoutput";
-	final static String entityClassName = "model.MiniPerson";
+	final static String demoClassName = "model.MiniPerson";
 	
 	final static String SRC_DIR = "src/main/java";
 	final static String WEB_DIR = "src/main/webapp";
@@ -38,11 +38,22 @@ public class JenGen {
 		editPageFilePattern = "%sEdit.xhtml";
 
 	public static void main(String[] args) throws Exception {
-		process();
+		if (args.length == 2 ) {
+			String dir = args[0];
+			String className = args[1];
+			String fileName = dir + "/" + className.replaceAll("\\.", "/") + ".class";
+			process(className, fileName);
+		} else {
+			System.err.println("Usage: JenGen classDir className");
+		}
 	}
 
-	private static void process() throws Exception {
-
+	private static void process(String className, String fileName) throws Exception {
+		System.out.println("Processing " + className);
+		
+		// Do this first - most likely to fail
+		Class<?> clazz = new FileClassLoader().nameToClass(className, fileName);
+		
 		VelocityEngine engine = new VelocityEngine();
 		// See http://stackoverflow.com/questions/9051413/unable-to-find-velocity-template-resources
 		engine.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
@@ -57,7 +68,7 @@ public class JenGen {
 		final File y = new File(OUTPUT_DIR + "/" + WEB_DIR);
 		ensureDirectoryExists(y);
 		
-		Class<?> clazz = Class.forName(entityClassName);
+		
 		context.put("entityClazz", clazz);
 		final String simpleName = clazz.getSimpleName();
 		context.put("EntityClassUC", simpleName);
