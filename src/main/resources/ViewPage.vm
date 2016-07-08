@@ -22,7 +22,7 @@
 		<h:panelGrid columns='2'>
 		
 		Id:
-		<h:inputText id="idTF" value="#{${EntityClassLC}Home.instance.id}"/>
+		<h:outputText id="idTF" value="#{${EntityClassLC}Home.instance.id}"/>
 		
 #foreach ($field in ${entityClazz.declaredFields})
 #if (${field.name} != "id")
