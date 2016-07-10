@@ -15,6 +15,7 @@ import javax.persistence.OrderBy;
  */
 @Entity
 public class MiniPerson {
+	private static final long serialVersionUID = -1L;
 	@Id
 	int id;
 	String username;
