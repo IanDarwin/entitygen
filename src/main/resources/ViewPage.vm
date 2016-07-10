@@ -18,8 +18,8 @@
 
 	<h:form id="entityForm">
 	<p:panel>
-		<f:facet name="header">${EntityClassUC} Edit</f:facet>
-		<h:panelGrid columns='2'>
+		<f:facet name="header">${EntityClassUC} Details</f:facet>
+		<p:panelGrid columns='2'>
 		
 		Id:
 		<h:outputText id="idTF" value="#{${EntityClassLC}Home.instance.id}"/>
@@ -32,7 +32,7 @@
 #end
 #end
 			
-		</h:panelGrid>
+		</p:panelGrid>
 	</p:panel>
 
 	<p:commandButton value="Edit" action="/${EntityClassLC}Edit.web" ajax='false'/>
