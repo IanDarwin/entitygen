@@ -29,7 +29,7 @@ public class JenGen {
 	
 	final static String SRC_DIR = "src/main/java";
 	final static String WEB_DIR = "src/main/webapp";
-	final static String PKG_NAME = "com.darwinsys.xyz";
+	final static String PKG_NAME = "com.example.data";
 	
 	final static String homeClassFilePattern = "%s/%sHome.java",
 		listClassFilePattern = "%s/%sList.java",
