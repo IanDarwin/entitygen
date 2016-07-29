@@ -14,12 +14,15 @@ It generates the five artifacts needed for a single-entity JSF list-detail appli
 Pre-requisites:
 	Apache Maven for building.
 
-APIs used:
+APIs used by this generator:
+
+-	Code generation is done using Apache Velocity; you can edit the templates.
+
+APIs used by the generated pages at runtime:
 
 -	darwinsys-ee API for EntityHome
 	Another repo of mine; not in Central yet; clone it and do "mvn install" to install in your .m2/repository
 -	Apache DeltaSpike Data for EntityList.
--	Code generation is done using Apache Velocity; you can edit the templates.
 
 == Limitations/TODOs:
 
