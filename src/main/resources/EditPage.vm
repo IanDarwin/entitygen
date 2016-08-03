@@ -39,8 +39,15 @@
 	</p:panel>
 
 	<p:commandButton value="Save" action="#{${EntityClassLC}Home.update}" ajax='false'/>
-	<p:commandButton value="Delete (no confirmation!)" action="#{${EntityClassLC}Home.remove}" ajax='false'/>
+	<p:commandButton value="Delete" action="#{${EntityClassLC}Home.remove}" ajax='false'/>
+        <p:confirm header="Confirm Deletion" message="Really delete this ${entityClassLC}?" icon="ui-icon-alert" />
+    </p:commandButton>
 	<p:commandButton value="Cancel" action="#{${EntityClassLC}Home.cancel}" ajax='false'/>
+
+    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
 	</h:form>
 	
 </ui:define>
