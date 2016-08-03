@@ -1,9 +1,14 @@
 package ${pkg_name};
 
+import javax.ejb.Stateful;
+import javax.inject.Named;
+import javax.enterprise.context.ConversationScoped;
+
 import entity.EntityHome;
 
 import ${entityClazz.name};
 
+@Stateful @Named @ConversationScoped
 public class ${EntityClassUC}Home extends EntityHome<${EntityClassUC},Long> {
 	
 	private static final long serialVersionUID = 1L;
