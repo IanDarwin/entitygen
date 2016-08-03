@@ -51,3 +51,8 @@ java -jar target/entitygen-0.0.1-SNAPSHOT-jar-with-dependencies.jar /tmp model.E
 ls -R ../entitygenoutput # or dir/s ..\entitygenoutput in the backward lands
 ----
 
+== Alternative!
+
+As a completely alternative way of building the UI part of this, consider use of
+http://metawidget.org/[MetaWidget], which builds a UI dynamically.
+It should be a good fit with the DeltaSpike Data UI layer.
