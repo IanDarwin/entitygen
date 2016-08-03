@@ -10,7 +10,7 @@
 <ui:define name="pageTitle">${EntityClassUC} Details</ui:define>
 <h:head>
 <f:metadata>
-    <f:event type="preRenderView" rendered="#{!empty request.getParameter('${EntityClassLC}Id')}" listener="#{${EntityClassLC}Home.wire(request.getParameter('${EntityClassLC}Id'))}"/>
+    <f:event type="preRenderView" rendered="#{!empty request.getParameter('${EntityClassLC}Id')}" listener="#{${EntityClassLC}Home.wire(Long.parseLong(request.getParameter('${EntityClassLC}Id')))}"/>
 </f:metadata>
 </h:head>
 
