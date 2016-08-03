@@ -38,21 +38,21 @@ public class JenGen {
 		editPageFilePattern = "%sEdit.xhtml";
 
 	public static void main(String[] args) throws Exception {
-		if (args.length == 2 ) {
-			String dir = args[0];
-			String className = args[1];
-			String fileName = dir + "/" + className.replaceAll("\\.", "/") + ".class";
-			process(className, fileName);
-		} else {
+		if (args.length != 2 ) {
 			System.err.println("Usage: JenGen classDir className");
+			System.exit(1);
 		}
+		String dir = args[0];
+		ClassLoader loader = new FileClassLoader(dir);
+		String className = args[1];
+		process(loader, className);
 	}
 
-	private static void process(String className, String fileName) throws Exception {
+	private static void process(ClassLoader loader, String className) throws Exception {
 		System.out.println("Processing " + className);
 		
 		// Do this first - most likely to fail
-		Class<?> clazz = new FileClassLoader().nameToClass(className, fileName);
+		Class<?> clazz = loader.loadClass(className);
 		
 		VelocityEngine engine = new VelocityEngine();
 		// See http://stackoverflow.com/questions/9051413/unable-to-find-velocity-template-resources
