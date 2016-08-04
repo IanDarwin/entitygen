@@ -39,7 +39,7 @@
 	</p:panel>
 
 	<p:commandButton value="Save" action="#{${EntityClassLC}Home.update}" ajax='false'/>
-	<p:commandButton value="Delete" action="#{${EntityClassLC}Home.remove}" ajax='false'/>
+	<p:commandButton value="Delete" action="#{${EntityClassLC}Home.remove}" ajax='false'>
         <p:confirm header="Confirm Deletion" message="Really delete this ${entityClassLC}?" icon="ui-icon-alert" />
     </p:commandButton>
 	<p:commandButton value="Cancel" action="#{${EntityClassLC}Home.cancel}" ajax='false'/>
