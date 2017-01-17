@@ -8,7 +8,7 @@ public class FromDBTest {
 
 	@Test
 	public void testUppercaseName() {
-		assertEquals("uc name", "Toronto", FromDB.uppercaseName("toronto"));
+		assertEquals("uc name", "Toronto", FromDB.fixupName("toronto"));
 	}
 
 }
