@@ -21,15 +21,17 @@ It generates the five artifacts needed for a single-entity JSF list-detail appli
 
 == Limitations/TODOs:
 
-- only does one entity at a time
 - assumes you have already coded the Java Entity and it's on your classpath; may use FromDB to generate it.
-- assumes you did so using Field annotations instead of Accessor annotations
+- Should have better integration of FromDB and JenGen so you could do it all in one pass.
+Could use the compiler API to compile FromDB's output?
+- Uses Field annotations rather than Accessor annotations
 - assumes a single level of inheritance for entities
 - assumes you want to use PrimeFaces UI.
 - assumes you don't mind having the output stuck in ../entitygenoutput/
 - Does not yet handle any relationships
 - Does not yet handle Enums
 - Output directory is hard-coded as ../entitygenoutput
+- FromDB could do much more work analyzing the table.
 - Whatever else I didn't think of yet.
 
 Some of these limitations will be easier or harder to remove than others. UTSL.
@@ -52,8 +54,9 @@ Apache Maven for building.
 
 == Alternative!
 
-The existing Hibernate Tools probably does a better job of some of this, but it's tied to Ant and/or Eclipse.
-See http://docs.jboss.org/tools/4.1.x.Final/en/hibernatetools/html_single/index.html.
+The existing Hibernate Tools probably does a better job of some of this, but it's tied to Ant and/or Eclipse,
+and mine is a simpler, lower-startup approach.
+But see http://docs.jboss.org/tools/4.1.x.Final/en/hibernatetools/html_single/index.html and decide before you start.
 
 As a completely alternative way of building the UI part of your application, consider use of
 http://metawidget.org/[MetaWidget], which builds a UI dynamically.
