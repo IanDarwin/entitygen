@@ -10,7 +10,7 @@
 <ui:define name="pageTitle">${EntityClassUC} Edit</ui:define>
 <h:head>
 <f:metadata>
-    <f:event type="preRenderView" rendered="#{!empty request.getParameter('${EntityClassLC}Id')}" listener="#{${EntityClassLC}Home.wire(request.getParameter('${EntityClassLC}Id'))}"/>
+    <f:event type="preRenderView" rendered="#{!empty request.getParameter('${EntityClassLC}Id')}" listener="#{${EntityClassLC}Home.wire(Long.parseLong(request.getParameter('${EntityClassLC}Id')))}"/>
     <f:event type="preRenderView" rendered="#{ empty request.getParameter('${EntityClassLC}Id')}" listener="#{${EntityClassLC}Home.create()}"/>
 </f:metadata>
 </h:head>
@@ -27,10 +27,11 @@
 		<h:outputText value=""/>
 		
 #foreach ($field in ${entityClazz.declaredFields})
-#if (${field.name} != "id")
-		${field.name}:
+#if (${field.name} != "id" && ${field.name} != "serialVersionUID"))
+		<h:outputText value="${field.name}:"/>
 		<h:inputText id="${field.name}TF" value="#{${EntityClassLC}Home.instance.${field.name}}" required='false'/>
 		<h:message id='${field.name}Message' for='${field.name}TF'/>
+
 #end
 #end
 			
@@ -38,8 +39,15 @@
 	</p:panel>
 
 	<p:commandButton value="Save" action="#{${EntityClassLC}Home.update}" ajax='false'/>
-	<p:commandButton value="Delete (no confirmation!)" action="#{${EntityClassLC}Home.remove}" ajax='false'/>
+	<p:commandButton value="Delete" action="#{${EntityClassLC}Home.remove}" ajax='false'>
+        <p:confirm header="Confirm Deletion" message="Really delete this ${entityClassLC}?" icon="ui-icon-alert" />
+    </p:commandButton>
 	<p:commandButton value="Cancel" action="#{${EntityClassLC}Home.cancel}" ajax='false'/>
+
+    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
 	</h:form>
 	
 </ui:define>

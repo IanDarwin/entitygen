@@ -35,7 +35,7 @@
 #if (${field.name} != "id")
 		<p:column>
 			<f:facet name="header">${field.name}</f:facet>
-			<h:outputText value="#{_entity.${field.name}"/>
+			<h:outputText value="#{_entity.${field.name}}"/>
 		</p:column>
 #end
 #end
@@ -45,16 +45,16 @@
 			<f:facet name="header">Operations</f:facet>
 			<h:outputLink value="${EntityClassUC}View.web">
 				View
-				<f:param name="personId" value="#{_entity.id}"/>
+				<f:param name="${EntityClassLC}Id" value="#{_entity.id}"/>
 			</h:outputLink>
 			<h:outputLink value="${EntityClassUC}Edit.web">
 				Edit
-				<f:param name="personId" value="#{_entity.id}"/>
+				<f:param name="${EntityClassLC}Id" value="#{_entity.id}"/>
 			</h:outputLink>
 		</p:column>
 	</p:dataTable>
 	<h:form>
-	<p:button outcome="${EntityClassUC}.web" value="Add"/>
+	<p:button outcome="${EntityClassUC}Edit.web" value="Add"/>
 	</h:form>
 	</p:panel>
 </ui:define>

@@ -7,11 +7,10 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/template/template.xhtml">
 
-<ui:define name="pageTitle">${EntityClassUC} Edit</ui:define>
+<ui:define name="pageTitle">${EntityClassUC} Details</ui:define>
 <h:head>
 <f:metadata>
-    <f:event type="preRenderView" rendered="#{!empty request.getParameter('${EntityClassLC}Id')}" listener="#{${EntityClassLC}Home.wire(request.getParameter('${EntityClassLC}Id'))}"/>
-    <f:event type="preRenderView" rendered="#{ empty request.getParameter('${EntityClassLC}Id')}" listener="#{${EntityClassLC}Home.create()}"/>
+    <f:event type="preRenderView" rendered="#{!empty request.getParameter('${EntityClassLC}Id')}" listener="#{${EntityClassLC}Home.wire(Long.parseLong(request.getParameter('${EntityClassLC}Id')))}"/>
 </f:metadata>
 </h:head>
 
@@ -19,26 +18,28 @@
 
 	<h:form id="entityForm">
 	<p:panel>
-		<f:facet name="header">${EntityClassUC} Edit</f:facet>
-		<h:panelGrid columns='2'>
+		<f:facet name="header">${EntityClassUC} Details</f:facet>
+		<p:panelGrid columns='2'>
 		
 		Id:
-		<h:inputText id="idTF" value="#{${EntityClassLC}Home.instance.id}"/>
+		<h:outputText id="idTF" value="#{${EntityClassLC}Home.instance.id}"/>
 		
 #foreach ($field in ${entityClazz.declaredFields})
-#if (${field.name} != "id")
-		${field.name}:
-		<h:outputText id="${field.name}TF" value="#{${EntityClassLC}Home.instance.${field.name}}" required='false'/>
-		#end
+#if (${field.name} != "id" && ${field.name} != "serialVersionUID"))
+		<h:outputText value="${field.name}:"/>
+		<h:outputText id="${field.name}TF" value="#{${EntityClassLC}Home.instance.${field.name}}"/>
+
+#end
 #end
 			
-		</h:panelGrid>
+		</p:panelGrid>
 	</p:panel>
 
-	<p:commandButton value="Edit" action="/${EntityClassLC}Edit.web" ajax='false'/>
+	<p:commandButton value="Edit" action="/${EntityClassLC}Edit.web" ajax='false'>
+		<f:param name="${EntityClassLC}Id" value="${EntityClassLC}Home.instance.id">
+	</p:commandButton>
 	<p:commandButton value="Done" action="#{${EntityClassLC}Home.done}" ajax='false'/>
 	</h:form>
 	
 </ui:define>
 </ui:composition>
->
