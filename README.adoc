@@ -37,7 +37,7 @@ Pull Requests welcome.
 
 == Pre-requisite for building
 
-	Apache Maven for building.
+Apache Maven for building.
 
 == APIs used by this generator:
 
