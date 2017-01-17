@@ -42,6 +42,7 @@ Apache Maven for building.
 == APIs used by this generator:
 
 -	Code generation is done using Apache Velocity; you can edit the templates.
+-	If using FromDB ensure your db driver is listed in pom.xml
 
 == APIs used by the generated pages at runtime:
 
@@ -50,6 +51,9 @@ Apache Maven for building.
 -	Apache DeltaSpike Data for EntityList.
 
 == Alternative!
+
+The existing Hibernate Tools probably does a better job of some of this, but it's tied to Ant and/or Eclipse.
+See http://docs.jboss.org/tools/4.1.x.Final/en/hibernatetools/html_single/index.html.
 
 As a completely alternative way of building the UI part of your application, consider use of
 http://metawidget.org/[MetaWidget], which builds a UI dynamically.
