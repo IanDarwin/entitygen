@@ -36,7 +36,7 @@
 	</p:panel>
 
 	<p:commandButton value="Edit" action="/${EntityClassLC}Edit.web" ajax='false'>
-		<f:param name="${EntityClassLC}Id" value="${EntityClassLC}Home.instance.id">
+		<f:param name="${EntityClassLC}Id" value="${EntityClassLC}Home.instance.id"/>
 	</p:commandButton>
 	<p:commandButton value="Done" action="#{${EntityClassLC}Home.done}" ajax='false'/>
 	</h:form>
