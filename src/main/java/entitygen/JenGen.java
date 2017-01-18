@@ -29,7 +29,8 @@ public class JenGen {
 	
 	final static String SRC_DIR = "src/main/java";
 	final static String WEB_DIR = "src/main/webapp";
-	final static String PKG_NAME = "com.example.data";
+	final static String PKG_NAME_ACTION = "action";
+	final static String PKG_NAME_MODEL = "model";
 	
 	final static String homeClassFilePattern = "%s/%sHome.java",
 		listClassFilePattern = "%s/%sList.java",
@@ -62,7 +63,7 @@ public class JenGen {
 
 		VelocityContext context = new VelocityContext();
 
-		String pkgDir = PKG_NAME.replace('.', '/');
+		String pkgDir = PKG_NAME_ACTION.replace('.', '/');
 		final File x = new File(OUTPUT_DIR + "/" + SRC_DIR, pkgDir);
 		ensureDirectoryExists(x);
 		final File y = new File(OUTPUT_DIR + "/" + WEB_DIR);
@@ -73,7 +74,7 @@ public class JenGen {
 		final String simpleName = clazz.getSimpleName();
 		context.put("EntityClassUC", simpleName);
 		context.put("EntityClassLC", toBeanName(clazz.getSimpleName()));
-		context.put("pkg_name", PKG_NAME);
+		context.put("pkg_name", PKG_NAME_MODEL);
 
 		// Java Code
 		Template homeClassTemplate = engine.getTemplate("HomeClass.vm");

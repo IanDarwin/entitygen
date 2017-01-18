@@ -1,5 +1,6 @@
 package entitygen;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -31,7 +32,8 @@ public class FromDB {
 			String tableName = args[n];
 			try {
 				entityClass = fixupName(tableName);
-				prog.generateEntityClass(conn, tableName, entityClass);
+				PrintWriter pout = new PrintWriter(System.out);
+				prog.generateEntityClass(pout, conn, tableName, entityClass);
 			} catch (SQLException e) {
 				System.err.println("Failure on " + tableName);
 				e.printStackTrace();
@@ -43,11 +45,14 @@ public class FromDB {
 		return Character.toUpperCase(name.charAt(0)) + name.substring(1);
 	}
 
-	void generateEntityClass(Connection conn, String tableName, String entityClass) throws SQLException {
-		System.out.println("// Class " + entityClass + " created by " + getClass().getName() + " at " + LocalDateTime.now());
-		System.out.println("import javax.persistence.*;");
-		System.out.println("@Entity");
-		System.out.println("public class " + entityClass + " {");
+	void generateEntityClass(PrintWriter out, Connection conn, String tableName, String entityClass) throws SQLException {
+		out.println("// Class " + entityClass + " created by " + getClass().getName() + " at " + LocalDateTime.now());
+		out.println("package " + JenGen.PKG_NAME_MODEL);
+		out.println();
+		out.println("import javax.persistence.*;");
+		out.println();
+		out.println("@Entity");
+		out.println("public class " + entityClass + " {");
 		DatabaseMetaData meta = conn.getMetaData();
 		// First the primary keys
 		ResultSet pKeys = meta.getPrimaryKeys(null, null, tableName);
@@ -103,11 +108,11 @@ public class FromDB {
 				break;
 			}
 			if (isIdColumn) {
-				System.out.println("\t@Id");
+				out.println("\t@Id");
 			}
-			System.out.println("\t" + typeStr + " " + column + ";");
+			out.println("\t" + typeStr + " " + column + ";");
 		}
-		System.out.println("}");
+		out.println("}");
 	}
 
 	@SuppressWarnings("unused") // Left here for debugging purposes
