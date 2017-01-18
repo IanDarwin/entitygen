@@ -1,5 +1,12 @@
 package entitygen;
 
+import static entitygen.JenGen.OUTPUT_DIR;
+import static entitygen.JenGen.PKG_NAME_MODEL;
+import static entitygen.JenGen.SRC_DIR;
+import static entitygen.JenGen.ensureDirectoryExists;
+
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -30,12 +37,22 @@ public class FromDB {
 
 		for (int n = 1; n < args.length; n++) {
 			String tableName = args[n];
+			entityClass = fixupName(tableName);
+			final String outputSourceDir = OUTPUT_DIR + "/" +
+					SRC_DIR + "/" + PKG_NAME_MODEL;
+			String outputFileName = outputSourceDir + "/" +
+					entityClass + ".java";
 			try {
-				entityClass = fixupName(tableName);
-				PrintWriter pout = new PrintWriter(System.out);
+				ensureDirectoryExists(new File(outputSourceDir));
+				PrintWriter pout = new PrintWriter(outputFileName);
 				prog.generateEntityClass(pout, conn, tableName, entityClass);
+				pout.close();
+				System.err.printf("Wrote Entity %s to %s%n", entityClass, outputFileName);
 			} catch (SQLException e) {
 				System.err.println("Failure on " + tableName);
+				e.printStackTrace();
+			} catch (IOException e) {
+				System.err.println("Output Error on " + outputFileName);
 				e.printStackTrace();
 			}
 		}
