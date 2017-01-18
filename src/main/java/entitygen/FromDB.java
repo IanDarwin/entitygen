@@ -109,8 +109,9 @@ public class FromDB {
 		}
 		System.out.println("}");
 	}
-	
-	void display(Connection conn, String entityClass) throws SQLException {
+
+	@SuppressWarnings("unused") // Left here for debugging purposes
+	private void display(Connection conn, String entityClass) throws SQLException {
 		System.out.println("FromDB.display");
 		if (conn == null) {
 			throw new IllegalArgumentException("Connection object is null");
