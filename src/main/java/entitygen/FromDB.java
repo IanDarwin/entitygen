@@ -64,7 +64,7 @@ public class FromDB {
 
 	void generateEntityClass(PrintWriter out, Connection conn, String tableName, String entityClass) throws SQLException {
 		out.println("// Class " + entityClass + " created by " + getClass().getName() + " at " + LocalDateTime.now());
-		out.println("package " + JenGen.PKG_NAME_MODEL);
+		out.println("package " + JenGen.PKG_NAME_MODEL + ';');
 		out.println();
 		out.println("import javax.persistence.*;");
 		out.println();
