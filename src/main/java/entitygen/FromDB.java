@@ -37,7 +37,7 @@ public class FromDB {
 
 		for (int n = 1; n < args.length; n++) {
 			String tableName = args[n];
-			entityClass = fixupName(tableName);
+			entityClass = upperCaseNameChar0(tableName);
 			final String outputSourceDir = OUTPUT_DIR + "/" +
 					SRC_DIR + "/" + PKG_NAME_MODEL;
 			String outputFileName = outputSourceDir + "/" +
@@ -58,8 +58,22 @@ public class FromDB {
 		}
 	}
 
-	public static String fixupName(String name) {
+	/** Convert a name like xyz to Xyz */
+	public static String upperCaseNameChar0(String name) {
 		return Character.toUpperCase(name.charAt(0)) + name.substring(1);
+	}
+	
+	/** Convert a name like first_name to firstName */
+	public static String upperCaseColName(String name) {
+		final StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < name.length(); i++) {
+			char c = name.charAt(i);
+			if (c == '_' && i < name.length() - 1) {
+				c = Character.toUpperCase(name.charAt(++i));
+			}
+			sb.append(c);
+		}
+		return sb.toString();
 	}
 
 	void generateEntityClass(PrintWriter out, Connection conn, String tableName, String entityClass) throws SQLException {
