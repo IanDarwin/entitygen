@@ -1,9 +1,15 @@
 = entitygen
 
 This is an attempt to re-create some of the functionality of seam-gen;
-The Home Function doesn't work at present!
+It consists of two main classes, FromDB and JenGen.
 
-It generates the five artifacts needed for a single-entity JSF list-detail application:
+== FromDB
+
+FromDB reads the database metadata and writes a skeleton of the Entity POJO.
+
+== JenGen
+
+JenGen reads the entity POJO and generates the five artifacts needed for a single-entity JSF list-detail application:
 
 - ${Entity}Home.java
 - ${Entity}List.java
@@ -16,22 +22,23 @@ It generates the five artifacts needed for a single-entity JSF list-detail appli
 - Build everything: `mvn package`
 - Install it somplace handy: `cp entitygen-0.0.1-SNAPSHOT-jar-with-dependencies.jar ~/lib/entitygen-0.0.1-SNAPSHOT.jar`
 - Change directory to where your entity exists and is built: `cd ~/workspace/myproject`
-- Run: `java -jar ~/lib/entitygen*.jar MyEntity`
+- Create ~/.db.properties with the details of the JDBC connection;
+- Run FromDB: `java -classpath ~/lib/entitygen*.jar entitygen.FromDB dbConnName`
+- Run JenGen: `java -jar ~/lib/entitygen*.jar MyEntity`
 - Examine ../entitygenoutput/*
 
 == Limitations/TODOs:
 
-- assumes you have already coded the Java Entity and it's on your classpath; may use FromDB to generate it.
+- JenJen assumes you have already coded the Java Entity and it's on your classpath; if not, use FromDB to generate it.
 - Should have better integration of FromDB and JenGen so you could do it all in one pass.
 Could use the compiler API to compile FromDB's output?
-- Uses Field annotations rather than Accessor annotations
+- Uses Field annotations rather than Accessor annotations; should be settable.
 - assumes a single level of inheritance for entities
 - assumes you want to use PrimeFaces UI.
 - assumes you don't mind having the output stuck in ../entitygenoutput/
-- Does not yet handle any relationships
+- Does not yet handle relationships
 - Does not yet handle Enums
-- Output directory is hard-coded as ../entitygenoutput
-- FromDB could do much more work analyzing the table.
+- FromDB could do more work analyzing the table.
 - Whatever else I didn't think of yet.
 
 Some of these limitations will be easier or harder to remove than others. UTSL.
