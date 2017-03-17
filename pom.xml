@@ -10,18 +10,20 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<javase.version>1.8</javase.version>
-		<javaee.version>7.0</javaee.version>
 		<maven.compiler.source>${javase.version}</maven.compiler.source>
 		<maven.compiler.target>${javase.version}</maven.compiler.target>
 		<maven.compiler.testSource>${javase.version}</maven.compiler.testSource>
 		<maven.compiler.testTarget>${javase.version}</maven.compiler.testTarget>
+		<javaee.version>7.0</javaee.version>
+		<darwinsys-api.version>1.2.0-SNAPSHOT</darwinsys-api.version>
+		<darwinsys-ee.version>0.2.0-SNAPSHOT</darwinsys-ee.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.darwinsys</groupId>
 			<artifactId>darwinsys-api</artifactId>
-			<version>1.0.5</version>
+			<version>${darwinsys-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
