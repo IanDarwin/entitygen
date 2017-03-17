@@ -13,14 +13,8 @@
 	<p:panel>
 	<f:facet name="header">${EntityClassUC}</f:facet>
 
-	<!-- Print the table, or, an error -->
-	<h:outputText
-		value="Arrr, Billy! I can't find any ${EntityClassUC}s. Did we add any yet??"
-		rendered="#{empty ${EntityClassLC}List.findAll()}"/>
-
 	<!-- Display the main part of the whole page. -->
 	<p:dataTable border='1' 
-		rendered="#{!empty ${EntityClassLC}List.findAll()}"
 		var="_entity" value="#{${EntityClassLC}List.findAll()}" 
 		paginator="true" rows="#{pfTableConstants.rows}"
 		paginatorTemplate="#{pfTableConstants.paginatorTemplate}"
