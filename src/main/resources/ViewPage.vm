@@ -25,7 +25,7 @@
 		<h:outputText id="idTF" value="#{${EntityClassLC}Home.instance.id}"/>
 		
 #foreach ($field in ${entityClazz.declaredFields})
-#if (${field.name} != "id" && ${field.name} != "serialVersionUID"))
+#if (${field.name} != "id" && ${field.name} != "serialVersionUID")
 		<h:outputText value="${field.name}:"/>
 		<h:outputText id="${field.name}TF" value="#{${EntityClassLC}Home.instance.${field.name}}"/>
 
