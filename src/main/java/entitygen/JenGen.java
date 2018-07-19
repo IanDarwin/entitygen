@@ -3,6 +3,7 @@ package entitygen;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTIme;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -77,7 +78,7 @@ public class JenGen {
 		context.put("pkg_name", PKG_NAME_MODEL);
 		// For @Generated annotation
 		context.put("generate_value", JenGen.class.getName());
-		context.put("generate_date", DateTime.now().toString());
+		context.put("generate_date", LocalDateTime.now().toString());
 
 		// Java Code
 		Template homeClassTemplate = engine.getTemplate("HomeClass.vm");
