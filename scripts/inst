@@ -1,0 +1,1 @@
+mv target/entitygen-*-jar-with-dependencies.jar ~/lib
