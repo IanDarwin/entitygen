@@ -2,6 +2,7 @@ package ${pkg_name};
 
 import java.util.List;
 
+import javax.annotation.Generated;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Default;
 import javax.inject.Named;
@@ -22,6 +23,7 @@ import org.apache.deltaspike.data.api.Repository;
 @Named("${EntityClassLC}List") @Default
 @SessionScoped
 @Repository
+@Generated(value="${generate_value}", date="${generate_date}")
 public interface ${EntityClassUC}List extends EntityRepository<${EntityClassUC}, Long> {
 	// can be empty initially
 }

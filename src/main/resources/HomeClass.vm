@@ -3,13 +3,15 @@ package ${pkg_name};
 import javax.annotation.ManagedBean;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
+import javax.annotation.Generated;
 
 import entity.EntityHome;
 
-@ManagedBean @Named @ConversationScoped
 import ${entityClazz.name};
 
+@ManagedBean @Named @ConversationScoped
 @Stateful @Named @ConversationScoped
+@Generated(value="${generate_value}", date="${generate_date}")
 public class ${EntityClassUC}Home extends EntityHome<${EntityClassUC},Long> {
 	
 	private static final long serialVersionUID = 1L;

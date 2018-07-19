@@ -75,6 +75,9 @@ public class JenGen {
 		context.put("EntityClassUC", simpleName);
 		context.put("EntityClassLC", toBeanName(clazz.getSimpleName()));
 		context.put("pkg_name", PKG_NAME_MODEL);
+		// For @Generated annotation
+		context.put("generate_value", JenGen.class.getName());
+		context.put("generate_date", DateTime.now().toString());
 
 		// Java Code
 		Template homeClassTemplate = engine.getTemplate("HomeClass.vm");
