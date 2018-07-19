@@ -19,7 +19,7 @@ JenGen reads the entity POJO and generates the five artifacts needed for a singl
 
 == HOWTO
 
-- Build everything: `mvn package`
+- Build everything: `mvn package assembly:single`
 - Install it somplace handy: `cp entitygen-0.0.1-SNAPSHOT-jar-with-dependencies.jar ~/lib/entitygen-0.0.1-SNAPSHOT.jar`
 - Change directory to where your entity exists and is built: `cd ~/workspace/myproject`
 - Create ~/.db.properties with the details of the JDBC connection;
