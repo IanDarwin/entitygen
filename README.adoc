@@ -24,7 +24,9 @@ JenGen reads the entity POJO and generates the five artifacts needed for a singl
 - Change directory to where your entity exists and is built: `cd ~/workspace/myproject`
 - Create ~/.db.properties with the details of the JDBC connection;
 - Run FromDB: `java -classpath ~/lib/entitygen*.jar entitygen.FromDB dbConnName`
+(or via the fromdb script in my scripts repo)
 - Run JenGen: `java -jar ~/lib/entitygen*.jar MyEntity`
+(or via the entitygen script in my scripts repo)
 - Examine ../entitygenoutput/*
 
 == Limitations/TODOs:
