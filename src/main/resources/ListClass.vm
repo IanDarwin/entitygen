@@ -2,6 +2,7 @@ package ${pkg_name};
 
 import java.util.List;
 
+import javax.annotation.processing.Generated;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Default;
 import javax.inject.Named;
@@ -22,7 +23,8 @@ import org.apache.deltaspike.data.api.Repository;
 @Named("${EntityClassLC}List") @Default
 @SessionScoped
 @Repository
-@Generated(value="entitygen.JenGen", date="{now}")
+@Generated(value="entitygen.JenGen", date="{now}",
+	comment="https://github.com/IanDarwin/entitygen")
 public interface ${EntityClassUC}List extends EntityRepository<${EntityClassUC}, Long> {
 	// can be empty initially
 }

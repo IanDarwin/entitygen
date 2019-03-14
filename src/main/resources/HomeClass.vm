@@ -1,6 +1,7 @@
 package ${pkg_name};
 
 import javax.annotation.ManagedBean;
+import javax.annotation.processing.Generated;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 
@@ -10,7 +11,8 @@ import entity.EntityHome;
 import ${entityClazz.name};
 
 @Stateful @Named @ConversationScoped
-@Generated(value="entitygen.JenGen", date="{now}")
+@Generated(value="entitygen.JenGen", date="{now}",
+	comment="https://github.com/IanDarwin/entitygen")
 public class ${EntityClassUC}Home extends EntityHome<${EntityClassUC},Long> {
 	
 	private static final long serialVersionUID = 1L;
