@@ -75,12 +75,15 @@ public class FromDB {
 	}
 
 	void generateEntityClass(PrintWriter out, Connection conn, String tableName, String entityClass) throws SQLException {
-		out.println("// Class " + entityClass + " created by " + getClass().getName() + " at " + LocalDateTime.now());
 		out.println("package " + JenGen.PKG_NAME_MODEL + ';');
 		out.println();
 		out.println("import javax.persistence.*;");
+		out.println("import javax.annotation.processing.Generated;");
 		out.println();
 		out.println("@Entity");
+		out.println("@Generated(value=\"" + getClass().getName() + "\", date=\"" + 
+			LocalDateTime.now() + "\"," +
+			"comment=\"https://github.com/IanDarwin/entitygen\")");
 		out.println("public class " + entityClass + " {");
 		DatabaseMetaData meta = conn.getMetaData();
 		// First the primary keys
