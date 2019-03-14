@@ -10,6 +10,7 @@ import entity.EntityHome;
 import ${entityClazz.name};
 
 @Stateful @Named @ConversationScoped
+@Generated(value="entitygen.JenGen", date="{now}")
 public class ${EntityClassUC}Home extends EntityHome<${EntityClassUC},Long> {
 	
 	private static final long serialVersionUID = 1L;

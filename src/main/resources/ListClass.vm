@@ -22,6 +22,7 @@ import org.apache.deltaspike.data.api.Repository;
 @Named("${EntityClassLC}List") @Default
 @SessionScoped
 @Repository
+@Generated(value="entitygen.JenGen", date="{now}")
 public interface ${EntityClassUC}List extends EntityRepository<${EntityClassUC}, Long> {
 	// can be empty initially
 }

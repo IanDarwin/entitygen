@@ -3,6 +3,7 @@ package entitygen;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -69,12 +70,12 @@ public class JenGen {
 		final File y = new File(OUTPUT_DIR + "/" + WEB_DIR);
 		ensureDirectoryExists(y);
 		
-		
 		context.put("entityClazz", clazz);
 		final String simpleName = clazz.getSimpleName();
 		context.put("EntityClassUC", simpleName);
 		context.put("EntityClassLC", toBeanName(clazz.getSimpleName()));
 		context.put("pkg_name", PKG_NAME_MODEL);
+		context.put("now", LocalDateTime.now());
 
 		// Java Code
 		Template homeClassTemplate = engine.getTemplate("HomeClass.vm");
