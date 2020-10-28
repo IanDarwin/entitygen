@@ -35,7 +35,7 @@ public class FromDB {
 		FromDB prog = new FromDB();
 		conn = ConnectionUtil.getConnection(args[0]);
 		String tableName = args[1];
-		entityClass = args.length == 2 ? args[2] : upperCaseNameChar0(tableName);
+		entityClass = args.length == 3 ? args[2] : upperCaseNameChar0(tableName);
 
 			final String outputSourceDir = OUTPUT_DIR + "/" +
 					SRC_DIR + "/" + PKG_NAME_MODEL;
