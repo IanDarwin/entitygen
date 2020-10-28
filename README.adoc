@@ -26,7 +26,7 @@ JenGen reads the entity POJO and generates the five artifacts needed for a singl
 - Run FromDB: `java -classpath ~/lib/entitygen*.jar entitygen.FromDB dbConnName tableName [ClassName]`
 (or via the fromdb script in my scripts repo)
 - Compile the generated Java classes
-- Run JenGen: `java -jar ~/lib/entitygen*.jar MyEntity`
+- Run JenGen: `java -jar ~/lib/entitygen*.jar target/classes model.MyEntity`
 (or via the entitygen script in my scripts repo)
 - Examine ../entitygenoutput/*
 
