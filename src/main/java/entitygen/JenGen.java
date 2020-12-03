@@ -3,7 +3,7 @@ package entitygen;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDateTIme;
+import java.time.LocalDateTime;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
