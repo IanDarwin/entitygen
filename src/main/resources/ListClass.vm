@@ -2,7 +2,7 @@ package ${pkg_name};
 
 import java.util.List;
 
-import javax.annotation.Generated;
+import javax.annotation.processing.Generated;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Default;
 import javax.inject.Named;

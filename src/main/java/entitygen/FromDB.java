@@ -28,16 +28,15 @@ public class FromDB {
 
 	public static void main(String[] args) {
 
-		if (args.length < 2) {
-			System.err.println("Usage: connection table [...]");
+		if (args.length < 2 || args.length > 3) {
+			System.err.println("Usage: connection table [ClassName]");
 			System.exit(1);
 		}
-		conn = ConnectionUtil.getConnection(args[0]);
 		FromDB prog = new FromDB();
+		conn = ConnectionUtil.getConnection(args[0]);
+		String tableName = args[1];
+		entityClass = args.length == 3 ? args[2] : upperCaseNameChar0(tableName);
 
-		for (int n = 1; n < args.length; n++) {
-			String tableName = args[n];
-			entityClass = upperCaseNameChar0(tableName);
 			final String outputSourceDir = OUTPUT_DIR + "/" +
 					SRC_DIR + "/" + PKG_NAME_MODEL;
 			String outputFileName = outputSourceDir + "/" +
@@ -55,7 +54,6 @@ public class FromDB {
 				System.err.println("Output Error on " + outputFileName);
 				e.printStackTrace();
 			}
-		}
 	}
 
 	/** Convert a name like xyz to Xyz */
@@ -77,12 +75,15 @@ public class FromDB {
 	}
 
 	void generateEntityClass(PrintWriter out, Connection conn, String tableName, String entityClass) throws SQLException {
-		out.println("// Class " + entityClass + " created by " + getClass().getName() + " at " + LocalDateTime.now());
 		out.println("package " + JenGen.PKG_NAME_MODEL + ';');
 		out.println();
 		out.println("import javax.persistence.*;");
+		out.println("import javax.annotation.processing.Generated;");
 		out.println();
 		out.println("@Entity");
+		out.println("@Generated(value=\"" + getClass().getName() + "\", date=\"" + 
+			LocalDateTime.now() + "\"," +
+			"comment=\"https://github.com/IanDarwin/entitygen\")");
 		out.println("public class " + entityClass + " {");
 		DatabaseMetaData meta = conn.getMetaData();
 		// First the primary keys

@@ -70,7 +70,6 @@ public class JenGen {
 		final File y = new File(OUTPUT_DIR + "/" + WEB_DIR);
 		ensureDirectoryExists(y);
 		
-		
 		context.put("entityClazz", clazz);
 		final String simpleName = clazz.getSimpleName();
 		context.put("EntityClassUC", simpleName);
